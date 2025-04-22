@@ -12,9 +12,11 @@ module.exports = {
         'goblin': ['"Goblin One"', ...fontFamily.sans],
         'russo': ['"Russo One"', ...fontFamily.sans],
         'squada': ['"Squada One"', ...fontFamily.sans],
+        'wallpoet': ['"Wallpoet"', ...fontFamily.sans],
       },
       backgroundImage: {
         'radial-gradient': 'radial-gradient(circle, #3b82f6, #8b5cf6)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
     }
   },
