@@ -40,14 +40,14 @@ function App() {
     <div className="flex flex-col h-screen bg-gradient-to-b from-[#141416] via-[#161a47] to-[#18181d] gap-4 max-h-screen overflow-hidden">
       {/* header */}
 
-      <header className=" bg-[#302b63]/30  text-left flex items-center">
+      <header className=" bg-[#302b63]/30 max-h-screen text-left flex items-center">
         <img src={furia} alt="Minha Imagem" className="w-8 h-8 ml-6 my-2" />
         <h1 className="font-russo uppercase bg-gradient-to-r from-[#757575] via-[#ffffff] to-[#b4b1b1] inline-block text-transparent bg-clip-text ml-4 ">furia fan chat</h1>
       </header>
 
-      <div className="flex h-full pl-28  mr-5">
+      <div className="flex h-[90%] h-max-screen pl-28 mr-5">
         {/* Left container */}
-        <div className="flex flex-col h-full aspect[16/9]">
+        <div className="flex flex-col h-full aspect[16/9] h-max-screen">
           <div className="rounded-md border-4 border-[#d9d9d956]/10 w-full h-full bg-cover">
             {/* video container */}
             <div
@@ -100,7 +100,8 @@ function App() {
 
         <div className="w-1/12" />
         {/* Right container */}
-        <div className=" flex flex-col w-2/5 mt-5 items-end gap">
+
+        <div className=" flex flex-col w-2/5 mt-5 h-max-ful items-end gap">
 
           {/* Top container */}
           <div className="flex w-full flex-row">
@@ -118,8 +119,8 @@ function App() {
           </div>
 
           {/*Chat*/}
-          <div className="flex flex-col border-2 border-[#656464]/30 w-full max-h-full rounded-[15px] mb-6 justify-center items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220] h-full">
-            <div className="flex flex-1 mt-6 flex-col w-11/12 border-2 rounded-[15px] border-[#4f4778]/20 bg-[#262239] p-3 overflow-auto h-72">
+          <div className="flex flex-col border-2 border-[#656464]/30 w-full max-h-[70%] h-[70%] rounded-[15px] justify-center items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220]">
+            <div className="max-h-[70%] h-[70%] flex mt-6 flex-col w-11/12 border-2 rounded-[15px] border-[#4f4778]/20 bg-[#262239] p-3 overflow-auto">
 
               <ChatMessage message={'Furia vai arrebentar nessa!!!'} name="AnaLaurixxx" />
 
