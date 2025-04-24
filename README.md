@@ -1,4 +1,4 @@
-📟 FURIA Fan Chat – README
+📟 FURIA Fan Chat – 
 
 Este projeto foi desenvolvido como parte do desafio de experiência conversacional da FURIA. O objetivo foi criar um ambiente interativo que simula a experiência de um torcedor durante uma partida de CS, com interface estilizada, placar, chat entre torcedores e representação dos jogadores.
 
