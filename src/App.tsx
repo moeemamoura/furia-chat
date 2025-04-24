@@ -17,16 +17,15 @@ type Message = {
 
 function App() {
 
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const [inputValue, setInputValue] = useState('');
 
   const [messages, setMessage] = useState<Message[]>([]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
 
   function sendMessage(message: string) {
     if (message === '') {
@@ -119,7 +118,8 @@ function App() {
           </div>
 
           {/*Chat*/}
-          <div className="flex flex-col border-2 border-[#656464]/30 w-full max-h-[70%] h-[70%] rounded-[15px] justify-center items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220]">
+          <div className="flex flex-col border-0 border-[#656464]/30 w-full max-h-[70%] h-[70%] rounded-[15px] justify-center items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220]"
+          >
             <div className="max-h-[70%] h-[70%] flex mt-6 flex-col w-11/12 border-2 rounded-[15px] border-[#4f4778]/20 bg-[#262239] p-3 overflow-auto">
 
               <ChatMessage message={'Furia vai arrebentar nessa!!!'} name="AnaLaurixxx" />
@@ -131,6 +131,7 @@ function App() {
               {messages.map(({ text, isUser }) => (
                 <ChatMessage message={text} isUser={isUser} name="Moema" />
               ))}
+              <div ref={messagesEndRef} />
             </div >
 
             <div className="flex w-11/12 items-center justify-start mb-2">
@@ -165,7 +166,6 @@ function App() {
                 </button>
               </div>
             </div>
-            <div ref={bottomRef}></div>
           </div>
         </div>
       </div>
