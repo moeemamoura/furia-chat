@@ -46,18 +46,18 @@ npm install
 npm start
 
   📈 Estrutura de arquivos principais
-
-/src
- ├─ App.tsx
- ├─ /components
- │   ├─ PlayerInfo.tsx
- │   ├─ ChatMessage.tsx
- │   └─ ChatBot.tsx
- ├─ /images
- │   ├─ logo.png
- │   ├─ furia.png
- │   └─ game.jpg
- └─ index.css
+  
+📂 src
+├── App.tsx
+├── 📁 components
+│   ├── ChatBot.tsx
+│   ├── ChatMessage.tsx
+│   └── PlayerInfo.tsx
+├── 📁 images
+│   ├── furia.png
+│   ├── game.jpg
+│   └── logo.png
+└── index.css
 
   🖊️ Estilização
 
