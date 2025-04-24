@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+📟 FURIA Fan Chat – README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi desenvolvido como parte do desafio de experiência conversacional da FURIA. O objetivo foi criar um ambiente interativo que simula a experiência de um torcedor durante uma partida de CS, com interface estilizada, placar, chat entre torcedores e representação dos jogadores.
 
-## Available Scripts
+🎯 Funcionalidades
 
-In the project directory, you can run:
+Exibição do placar ao vivo e nome do mapa
 
-### `npm start`
+Listagem de jogadores com barra de vida
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Chat para torcedores com envio de mensagens
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Emojis interativos (palmas e coração)
 
-### `npm test`
+Auto-scroll para a última mensagem
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Estilização com fontes e gradientes personalizados usando Tailwind CSS
 
-### `npm run build`
+💡 Componentes criados
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+PlayerInfo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Exibe o nome do jogador e sua barra de vida, com estilo invertido caso esteja no time adversário.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ChatMessage
 
-### `npm run eject`
+Renderiza mensagens enviadas no chat. Identifica se é do usuário e mostra o ícone correspondente. Emojis de reacao também são renderizados.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ChatBot
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Exibe mensagens automáticas como próximos jogos, funcionando como um bot de informações no chat.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🚀 Tecnologias usadas
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+React + TypeScript
 
-## Learn More
+Tailwind CSS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Phosphor Icons
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Google Fonts
 
-### Code Splitting
+📂 Como rodar o projeto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm install
+npm start
 
-### Analyzing the Bundle Size
+📈 Estrutura de arquivos principais
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+/src
+ ├─ App.tsx
+ ├─ /components
+ │   ├─ PlayerInfo.tsx
+ │   ├─ ChatMessage.tsx
+ │   └─ ChatBot.tsx
+ ├─ /images
+ │   ├─ logo.png
+ │   ├─ furia.png
+ │   └─ game.jpg
+ └─ index.css
 
-### Making a Progressive Web App
+🖊️ Estilização
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Tailwind CSS customizado com:
 
-### Advanced Configuration
+Fontes: Russo One, Squada One, Wallpoet, Goblin One
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Gradientes de texto e fundo
 
-### Deployment
+Animações e responsividade com flex, grid e overflow-auto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+📅 Funcionalidade extra implementada
 
-### `npm run build` fails to minify
+Scroll automático até a última mensagem com:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+}, [messages]);
+
+📍 Protótipo inicial (Figma)
+
+![image](https://github.com/user-attachments/assets/5ddca49e-69be-4f35-839d-44f43c5b507a)
+
+
+
+
