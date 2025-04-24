@@ -16,7 +16,7 @@ Auto-scroll para a última mensagem
 
 Estilização com fontes e gradientes personalizados usando Tailwind CSS
 
- 💡 Componentes criados
+     💡 Componentes criados
 
 PlayerInfo
 
@@ -30,7 +30,7 @@ ChatBot
 
 Exibe mensagens automáticas como próximos jogos, funcionando como um bot de informações no chat.
 
- 🚀 Tecnologias usadas
+     🚀 Tecnologias usadas
 
 React + TypeScript
 
@@ -40,12 +40,12 @@ Phosphor Icons
 
 Google Fonts
 
-  📂 Como rodar o projeto
+      📂 Como rodar o projeto
 
 npm install
 npm start
 
-  📈 Estrutura de arquivos principais
+      📈 Estrutura de arquivos principais
   
   -src/
 
@@ -65,7 +65,7 @@ npm start
 
     - index.css – Estilização base da aplicação.
 
-  🖊️ Estilização
+      🖊️ Estilização
 
 Tailwind CSS customizado com:
 
@@ -75,7 +75,7 @@ Gradientes de texto e fundo
 
 Animações e responsividade com flex, grid e overflow-auto
 
-  📅 Funcionalidade extra implementada
+      📅 Funcionalidade extra implementada
 
 Scroll automático até a última mensagem com:
 
@@ -83,7 +83,7 @@ useEffect(() => {
   messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
 }, [messages]);
 
-  📍 Protótipo inicial (Figma)
+      📍 Protótipo inicial (Figma)
 
 ![image](https://github.com/user-attachments/assets/5ddca49e-69be-4f35-839d-44f43c5b507a)
 
