@@ -47,17 +47,23 @@ npm start
 
   📈 Estrutura de arquivos principais
   
-  src/
-├─ App.tsx
-├─ components/
-│  ├─ ChatBot.tsx
-│  ├─ ChatMessage.tsx
-│  └─ PlayerInfo.tsx
-├─ images/
-│  ├─ furia.png
-│  ├─ game.jpg
-│  └─ logo.png
-└─ index.css
+  -src/
+
+  - App.tsx – Componente principal que integra o layout geral da aplicação.
+  
+      - components/ – Contém os componentes reutilizáveis:
+  
+          - ChatBot.tsx – Mensagens automáticas no chat.
+  
+          - ChatMessage.tsx – Mensagens dos usuários e emojis.
+  
+          - PlayerInfo.tsx – Informações dos jogadores e barra de vida.
+  
+       - images/ – Imagens utilizadas na interface:
+  
+          - furia.png, game.jpg, logo.png
+
+        - index.css – Estilização base da aplicação.
 
   🖊️ Estilização
 
