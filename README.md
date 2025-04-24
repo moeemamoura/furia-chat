@@ -63,7 +63,7 @@ npm start
   
           - furia.png, game.jpg, logo.png
 
-        - index.css – Estilização base da aplicação.
+    - index.css – Estilização base da aplicação.
 
   🖊️ Estilização
 
