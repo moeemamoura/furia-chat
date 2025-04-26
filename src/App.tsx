@@ -8,6 +8,8 @@ import { HandsClapping, PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
 import { Heart } from "@phosphor-icons/react";
 import { ChatBot } from "./components/ChatBot";
 import { useRef, useEffect } from "react";
+import { db } from "./services/firebase";
+import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
 
 
 type Message = {
@@ -21,19 +23,40 @@ function App() {
 
   const [inputValue, setInputValue] = useState('');
 
-  const [messages, setMessage] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  function sendMessage(message: string) {
+  async function sendMessage(message: string) {
+    console.log(message)
     if (message === '') {
       return;
     }
+
     setInputValue('');
-    setMessage([...messages, { text: message, isUser: true }]);
+
+    await addDoc(collection(db, "messages"), {
+      text: message,
+      createdAt: serverTimestamp(),
+    });
   }
+
+  useEffect(() => {
+    console.log('entrou')
+    const q = query(collection(db, "messages"), orderBy("createdAt"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let msgs: any[] = [];
+      querySnapshot.forEach((doc) => {
+        msgs.push({ ...doc.data(), id: doc.id });
+      });
+      console.log('msgs', msgs)
+      setMessages(msgs);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-b from-[#141416] via-[#161a47] to-[#18181d] gap-4 max-h-screen overflow-hidden">
