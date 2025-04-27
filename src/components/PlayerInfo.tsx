@@ -27,7 +27,7 @@ export function PlayerInfo({ name, life, inverted }: Props) {
                 <div className="h-4 bg-purble w-28 overflow-hidden -skew-x-12 flex bg-[#D9D9D9]/10 rounded-xs border-2 border-black/20"
                     style={inverted ? { flexDirection: 'row-reverse' } : {}}
                 >
-                    <div className="-skew-x-12 bg-[#fcfcfed8]" style={{ width: `${life}%` }}></div>
+                    <div className="-skew-x-12 bg-[#2950c7]/70" style={{ width: `${life}%` }}></div>
                 </div>
             </div>
         </div>

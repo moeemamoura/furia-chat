@@ -5,6 +5,7 @@ import { auth, provider } from "../services/firebase";
 type AuthContextType = {
     user: UserCredential['user'] | undefined;
     signInWithGoogle: () => Promise<void>;
+    signOut: () => void;
 }
 
 type AuthContextProviderProps = {
@@ -18,11 +19,33 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     async function signInWithGoogle() {
         const result = await signInWithPopup(auth, provider);
+        localStorage.setItem('user', JSON.stringify(result.user))
         setUser(result.user);
     }
 
+    function signOut() {
+        localStorage.removeItem('user')
+        setUser(undefined);
+    }
+
+    function getLoggedUser() {
+        const userData = localStorage.getItem('user');
+
+        if (!userData) {
+            return;
+        }
+
+        const formattedUserData = JSON.parse(userData);
+
+        setUser(formattedUserData);
+    }
+
+    useEffect(() => {
+        getLoggedUser();
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ user, signInWithGoogle }}>
+        <AuthContext.Provider value={{ user, signInWithGoogle, signOut }}>
             {props.children}
         </AuthContext.Provider>
     );
