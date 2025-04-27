@@ -5,16 +5,21 @@ import game from './images/game.jpg';
 import { ChatMessage } from "./components/ChatMessage";
 import { useState } from "react";
 import { HandsClapping, PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
-import { Heart } from "@phosphor-icons/react";
+import { GoogleLogo, Heart, SignIn } from "@phosphor-icons/react";
 import { ChatBot } from "./components/ChatBot";
 import { useRef, useEffect } from "react";
-import { db } from "./services/firebase";
+import { db, auth, provider } from "./services/firebase";
 import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { signInWithPopup, UserCredential } from "firebase/auth";
 
 
 type Message = {
-  text: string;
-  isUser?: boolean;
+  uid: string
+  text: string
+  displayName: string
+  photoURL: string
+  createdAt: any
+  id: string
 };
 
 function App() {
@@ -24,6 +29,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 
   const [messages, setMessages] = useState<Message[]>([]);
+  const [user, setUser] = useState<UserCredential['user']>();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -37,10 +43,22 @@ function App() {
 
     setInputValue('');
 
+    if (!user) {
+      return;
+    }
+
     await addDoc(collection(db, "messages"), {
+      uid: user.uid,
       text: message,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
       createdAt: serverTimestamp(),
     });
+  }
+
+  async function handleLogin() {
+    const result = await signInWithPopup(auth, provider);
+    setUser(result.user);
   }
 
   useEffect(() => {
@@ -143,7 +161,18 @@ function App() {
           {/*Chat*/}
           <div className="flex flex-col border-0 border-[#656464]/30 w-full max-h-[70%] h-[70%] rounded-[15px] justify-center items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220]"
           >
-            <div className="max-h-[70%] h-[70%] flex mt-6 flex-col w-11/12 border-2 rounded-[15px] border-[#4f4778]/20 bg-[#262239] p-3 overflow-auto">
+            {!user ? (
+              <button className="flex px-4 py-2 justify-end text-white font-squada border-2 rounded-lg my-4 gap-2 items-center hover:bg-white/10" onClick={handleLogin}>
+                <SignIn />
+
+                Conecte-se para interagir
+              </button>
+            ) : (
+              <div className="flex px-4 py-2 justify-end text-white font-squada border-2 border-transparent rounded-lg my-4 gap-2 items-center">
+                <p className="text-white">Olá, {user.displayName}</p>
+              </div>
+            )}
+            <div className="max-h-[70%] h-[70%] flex-col w-[96%]  border-2 rounded-[15px] border-[#4f4778]/20 bg-[#262239] p-3 overflow-auto">
 
               <ChatMessage message={'Furia vai arrebentar nessa!!!'} name="AnaLaurixxx" />
 
@@ -151,8 +180,13 @@ function App() {
 
               <ChatMessage message={'gogogo'} name="leooReis_09" />
 
-              {messages.map(({ text, isUser }) => (
-                <ChatMessage message={text} isUser={isUser} name="Moema" />
+              {messages.map((message) => (
+                <ChatMessage
+                  photoURL={message.photoURL}
+                  message={message.text}
+                  isLoggedUser={message.uid === user?.uid}
+                  name={message.displayName}
+                />
               ))}
               <div ref={messagesEndRef} />
             </div >
@@ -171,7 +205,7 @@ function App() {
 
               <div className="flex flex-1 h-[44px] items-center border-2 rounded-[10px] border-[#4f4778]">
                 <input
-                  className="flex flex-1 w-full font-squada text-xl text-[#e6e3e3] bg-transparent p-4 focus:outline-none"
+                  className="flex flex-1 w-full font-squada text-lg text-[#e6e3e3] bg-transparent pl-4 focus:outline-none"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={(e) => {
@@ -181,10 +215,10 @@ function App() {
                   }}
                   placeholder="Digite sua mensagem..."
                 />
-                <button className="flex p-6 items-center "
+                <button className="flex px-2 items-center "
 
                   onClick={() => sendMessage(inputValue)} >
-                  <PaperPlaneRight color="#e3dfdf" size={28}
+                  <PaperPlaneRight color="#e3dfdf" size={20}
                   />
                 </button>
               </div>
