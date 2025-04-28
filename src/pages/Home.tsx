@@ -78,8 +78,8 @@ function Home() {
 
             <div className="flex h-[90%] h-max-screen pl-16 pb-4">
                 {/* Left container */}
-                <div className="flex flex-col h-full aspect[16/9] h-max-screen">
-                    <div className="rounded-md border-4 border-[#d9d9d956]/10 w-full h-full bg-cover">
+                <div className="flex flex-col h-full h-max-screen">
+                    <div className="rounded-md border-4 border-[#656464]/20 w-full h-full bg-cover">
                         {/* video container */}
                         <div
                             className=" w-full h-full bg-cover"
@@ -88,7 +88,7 @@ function Home() {
                         </div>
                     </div>
 
-                    <div className="flex flex-1 justify-between px-4">
+                    <div className="flex flex-1 justify-between p-4 items-center">
 
                         <div className="font-wallpoet uppercase bg-gradient-to-r from-[#ebebeb] to-[#aaa8a8]  inline-block text-transparent bg-clip-text text-4xl">
                             furia
@@ -102,7 +102,7 @@ function Home() {
                     </div>
 
                     {/* score container */}
-                    <div className="grid grid-cols-3 h-full w-full">
+                    <div className="grid grid-cols-3 h-1/2 w-full justify-center items-center">
                         {/* left side */}
                         <div className="flex min-w-52 flex-col">
                             <PlayerInfo name="FalleN" life={60} />
@@ -112,7 +112,7 @@ function Home() {
                             <PlayerInfo name="molodoy" life={100} />
                         </div>
                         {/* middle side */}
-                        <div className="flex flex-col items-center w-60 justify-end">
+                        <div className="flex flex-col items-center w-60">
                             <div className="font-wallpoet uppercase bg-gradient-to-r from-[#ffffff] via-[#b9b4b4] to-[#f5f3f3] text-transparent bg-clip-text text-3xl">score</div>
                             <div className="font-squada  uppercase bg-gradient-to-r from-[#dfdfdf] via-[#e4e2e2] to-[#ffffff]  text-transparent bg-clip-text text-5xl mt-[10%]">5 - 4</div>
                             <div className="font-wallpoet uppercase bg-gradient-to-r from-[#ffffff] via-[#b9b4b4] to-[#f5f3f3] text-transparent bg-clip-text text-4xl mt-[10%]">mapa</div>
@@ -148,23 +148,26 @@ function Home() {
                             <div className="flex w-[25%] h-[25%] mt-2">
                                 <img src={furia} alt="Minha Imagem" className="size-12 ml-4 my-2" />
                             </div>
-                            {!user ? (
-                                <button className="flex px-4 py-2 text-white font-squada border-2 rounded-lg my-4 gap-2 items-center hover:bg-white/10" onClick={signInWithGoogle}>
-                                    <SignIn />
 
-                                    Conecte-se para interagir
-                                </button>
-                            ) : (
-                                <div className="flex px-4 py-2 justify-end text-white font-squada border-2 border-transparent rounded-lg my-4 gap-2 items-center">
-                                    <p className="text-white">Olá, {user.displayName}</p>
+                            <div className="flex flex-1 items-center justify-end mr-4">
+                                {!user ? (
+                                    <button className="flex px-4 py-2 text-white font-squada border-2 rounded-lg my-4 gap-2 items-center hover:bg-white/10" onClick={signInWithGoogle}>
+                                        <SignIn />
 
-                                    <button onClick={signOut}>
-                                        <SignOut />
+                                        Conecte-se para interagir
                                     </button>
-                                </div>
-                            )}
+                                ) : (
+                                    <div className="flex px-4 py-2 justify-end text-white font-squada border-2 border-transparent rounded-lg my-4 gap-2 items-center">
+                                        <p className="text-white">Olá, {user.displayName}</p>
+
+                                        <button onClick={signOut}>
+                                            <SignOut />
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <div className="max-h-[70%] h-[70%] flex-col w-[96%]  border-2 rounded-[15px] border-[#4f4778]/20 justify-center bg-[#262239] p-3 overflow-auto">
+                        <div className="h-full flex-col w-[96%]  border-2 rounded-[15px] border-[#4f4778]/20 justify-center bg-[#262239] p-3 overflow-auto">
 
                             <ChatMessage message={'Furia vai arrebentar nessa!!!'} name="AnaLaurixxx" />
 
