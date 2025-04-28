@@ -145,7 +145,7 @@ function Home() {
                     <div className="flex flex-col flex-1 border-2 border-[#656464]/20 w-full h-full rounded-[15px] items-center bg-gradient-radial from-[#010117] via-[#1908376c] to-[#110220]"
                     >
                         <div className="flex w-full">
-                            <div className="flex w-[25%] h-[25%] mt-2">
+                            <div className="flex w-[25%] h-[25%] mt-2 ml-2">
                                 <img src={furia} alt="Minha Imagem" className="size-12 ml-4 my-2" />
                             </div>
 
